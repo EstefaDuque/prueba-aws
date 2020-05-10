@@ -21,7 +21,7 @@ export class ListItemsComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      text: ["", [Validators.required]],
+      text: ['', [Validators.required]],
     });
   }
 
