@@ -12,7 +12,7 @@ export class DialogMaterialComponent {
     @Inject(MAT_DIALOG_DATA) public data: string
   ) {}
 
-  closeDialog(resp: boolean): void {
+  closeDialog(resp?: boolean): void {
     if (resp) {
       this.dialogRef.close(resp);
     }
