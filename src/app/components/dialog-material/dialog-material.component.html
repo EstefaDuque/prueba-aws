@@ -1,0 +1,25 @@
+<div *ngIf="data=='edit'">
+  <div mat-dialog-content >
+
+    <mat-form-field>
+      <mat-label>Nuevo texto</mat-label>
+      <input matInput #newText>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="newText.value" cdkFocusInitial>Ok</button>
+  </div>
+  
+
+</div>
+
+<div *ngIf="data=='delete'">
+  <div mat-dialog-mat-dialog-content>
+    <p>Desea Eliminar el texto</p>
+  </div>
+  <div mat-dialog-actions >
+    <button mat-button (click)="closeDialog()">No</button>
+    <button mat-button (click)="closeDialog(true)" cdkFocusInitial>Si</button>
+  </div>
+</div>
