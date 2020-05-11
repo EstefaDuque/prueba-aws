@@ -16,9 +16,9 @@
 
             <table *ngIf="list.length>0" cdkDropList class="list-container" (cdkDropListDropped)="moveItem($event)">
 
-                <tr cdkDrag class="list-item" *ngFor="let item of list; let i=index">
+                <tr (click)="TestGo()" cdkDrag class="list-item" *ngFor="let item of list; let i=index">
                     <td>{{item}}</td>
-                    <td>
+                    <td >
                         <button mat-mini-fab id="button-delete" (click)="deleteItem(i)">
                             <mat-icon>delete</mat-icon>
                         </button>
