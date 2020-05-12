@@ -1,3 +1,7 @@
+import { ListEffects } from './store/effects/list.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from './../environments/environment.prod';
+import { EffectsModule } from '@ngrx/effects';
 import { appReducers } from './store/reducers/app.reducers';
 import { StoreModule } from '@ngrx/store';
 import { RouterEffects } from 'ngrx-router';
@@ -22,9 +26,13 @@ import { PruebaRutasReduxComponent } from './components/prueba-rutas-redux/prueb
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    StoreRouterConnectingModule.forRoot(),
+    StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([RouterEffects])
+    EffectsModule.forRoot([RouterEffects, ListEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
 
   ],
   providers: [],

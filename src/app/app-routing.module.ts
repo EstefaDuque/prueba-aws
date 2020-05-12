@@ -6,7 +6,7 @@ import { ListItemsComponent } from './components/list-items/list-items.component
 
 const routes: Routes = [
   {path: '', component: ListItemsComponent },
-  {path: 'prueba-rutas-redux', component: PruebaRutasReduxComponent}
+  {path: 'prueba-rutas-redux/:text', component: PruebaRutasReduxComponent}
 ];
 
 @NgModule({

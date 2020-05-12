@@ -20,18 +20,20 @@
   }
   
   #button-add {
-    background: #93eaaf;
+    background-color: #93eaaf;
     margin-top: 15px;
   }
   
-  #button-delete {
-    background: #fb2e51;
+  .button-delete {
+    background-color: #fb2e51;
   }
   
-  #button-edit {
-    background: #366aef;
+  .button-edit {
+    background-color: #366aef;
+    
   }
-  /*Drag&Drop sorting*/
+  
+ /*Drag&Drop sorting*/
   
   .list-container {
     width: 500px;
