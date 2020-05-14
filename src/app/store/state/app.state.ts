@@ -1,7 +1,5 @@
-import { IListState, initialStateList } from './list.state';
-import { RouterReducerState } from '@ngrx/router-store';
+import {  TextListState } from './list.state';
 
-export interface IAppState{
-    router?: RouterReducerState;
-    list: IListState;
+export interface AppState {
+    textList: TextListState;
 }

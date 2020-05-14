@@ -26,7 +26,6 @@ import { PruebaRutasReduxComponent } from './components/prueba-rutas-redux/prueb
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    StoreRouterConnectingModule.forRoot({ stateKey: 'router' }),
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot([RouterEffects, ListEffects]),
     StoreDevtoolsModule.instrument({

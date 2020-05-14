@@ -1,12 +1,12 @@
 <div class="form-container">
     <mat-card>
-        <mat-card-header [formGroup]="form">
+        <mat-card-header [formGroup]="textListForm">
             <mat-form-field class="form-field-add">
-                <mat-label>Ingrese un texto </mat-label>
+                <mat-label>Ingrese una palabra sin espacios en blanco </mat-label>
                 <input matInput #text formControlName='text'>
 
             </mat-form-field>
-            <button mat-mini-fab id="button-add" (click)="addItem(text.value)" [disabled]="!form.valid">
+            <button mat-mini-fab class="button-add" (click)="addItem(text.value)" [disabled]="!textListForm.valid">
                 <mat-icon>add</mat-icon>
             </button>
         </mat-card-header>
@@ -14,10 +14,10 @@
 
         <mat-card-content>
 
-            <table *ngIf="list.length>0" cdkDropList class="list-container" (cdkDropListDropped)="moveItem($event)">
+            <table *ngIf="textList.length>0" cdkDropList class="list-container" (cdkDropListDropped)="moveItem($event)">
 
-                <tr  cdkDrag class="list-item" *ngFor="let item of list; let i=index">
-                    <td (click)="testGo(item)">{{item}}</td>
+                <tr  cdkDrag class="list-item" *ngFor="let item of textList; let i=index">
+                    <td (click)="routerGo(item)">{{item}}</td>
                     <td >
                         <button mat-mini-fab class="button-delete" (click)="deleteItem(i)">
                             <mat-icon>delete</mat-icon>

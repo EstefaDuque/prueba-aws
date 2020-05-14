@@ -1,4 +1,4 @@
-import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { IAppState } from '../state/app.state';
+import { createFeatureSelector } from '@ngrx/store';
+import { TextListState } from '../state/list.state';
 
-export const selectList = createFeatureSelector<IAppState>('list');
+export const selectTextList = createFeatureSelector<TextListState>('textList');

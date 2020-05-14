@@ -1,10 +1,8 @@
 import { ActionReducerMap } from '@ngrx/store';
-import { IAppState } from '../state/app.state';
-import { routerReducer } from '@ngrx/router-store';
-import { listReducer } from './list.reducers';
+import { AppState } from '@app/store/state/app.state';
+import { listReducer } from '@app/store/reducers/list.reducers';
 
 
-export const appReducers: ActionReducerMap<IAppState, any> = {
-    router : routerReducer,
-    list: listReducer
+export const appReducers: ActionReducerMap<AppState, any> = {
+    textList: listReducer
 }

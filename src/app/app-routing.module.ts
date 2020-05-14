@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PruebaRutasReduxComponent } from './components/prueba-rutas-redux/prueba-rutas-redux.component';
-import { ListItemsComponent } from './components/list-items/list-items.component';
+import { PruebaRutasReduxComponent } from '@app/components/prueba-rutas-redux/prueba-rutas-redux.component';
+import { ListItemsComponent } from '@app/components/list-items/list-items.component';
 
 
 const routes: Routes = [

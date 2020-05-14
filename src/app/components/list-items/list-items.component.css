@@ -15,13 +15,10 @@
     margin: 5px;
     padding: 10px;
   }
-  button {
-    margin-right: 5px;
-  }
-  
-  #button-add {
+ 
+  .button-add {
     background-color: #93eaaf;
-    margin-top: 15px;
+    margin: 15px;
   }
   
   .button-delete {
@@ -31,6 +28,9 @@
   .button-edit {
     background-color: #366aef;
     
+  }
+  .button-delete ,.button-edit{
+    margin: 5px 5px;
   }
   
  /*Drag&Drop sorting*/

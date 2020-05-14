@@ -1,8 +1,12 @@
-import { selectList } from './../../store/selectors/list.selectors';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { IAppState } from 'src/app/store/state/app.state';
+
 import { Store } from '@ngrx/store';
+
+import { TextListState } from '@app/store/state/list.state';
+import {  selectTextList } from '@app/store/selectors/list.selectors';
+import { AppState } from '@app/store/state/app.state';
+
 
 @Component({
   selector: 'app-prueba-rutas-redux',
@@ -10,15 +14,17 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./prueba-rutas-redux.component.css'],
 })
 export class PruebaRutasReduxComponent implements OnInit {
-  getState$: Observable<any>;
+
+  textListState$: Observable<TextListState>;
   selectText: string;
 
-  constructor(private store: Store<IAppState>) {
-    this.getState$ = this.store.select(selectList);
+  constructor(private store: Store<AppState>) {
+    this.textListState$ = this.store.select(selectTextList);
+    
   }
 
   ngOnInit() {
-    this.getState$.subscribe((result) => {
+    this.textListState$.subscribe((result) => {
       this.selectText = result.text;
     });
   }

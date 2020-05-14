@@ -1,25 +1,22 @@
-import { filter } from 'rxjs/operators';
-import { initialStateList, IListState } from './../state/list.state';
-import { ListActions, ListActionsTypes } from './../actions/list.actions';
-import { Action } from '@ngrx/store';
+import { initialStateTextList, TextListState } from '@app/store/state/list.state';
+import { ListActions, ListActionsTypes } from '@app/store/actions/list.actions';
 
-export function listReducer(
-  state = initialStateList,
-  action: ListActions
-): IListState {
+export function listReducer( state = initialStateTextList, action: ListActions ): TextListState {
+
   switch (action.type) {
-    case ListActionsTypes.EDIT_ITEM: {
-      const list = action.payload.list;
-      list.splice(action.payload.position, 1, action.payload.text);
+
+    case ListActionsTypes.ADD_ITEM: {
+      const list = state.list;
+      list.push(action.text);
       return {
         ...state,
         list,
       };
     }
 
-    case ListActionsTypes.ADD_ITEM: {
-      const list = action.payload.list;
-      list.push(action.payload.text);
+    case ListActionsTypes.EDIT_ITEM: {
+      const list = state.list;
+      list.splice(action.position, 1, action.newText);
       return {
         ...state,
         list,
@@ -27,8 +24,8 @@ export function listReducer(
     }
 
     case ListActionsTypes.DELETE_ITEM: {
-      const list = action.payload.list;
-      list.splice(action.payload.position, 1);
+      const list = state.list;
+      list.splice(action.position, 1);
 
       return {
         ...state,
@@ -39,7 +36,7 @@ export function listReducer(
     case ListActionsTypes.ROUTE_PARAM: {
       return {
         ...state,
-        text: action.param,
+        text: action.param
       };
     }
 

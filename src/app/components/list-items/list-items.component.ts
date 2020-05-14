@@ -1,82 +1,97 @@
 
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-//Angular Material
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { DialogMaterialComponent } from './../dialog-material/dialog-material.component';
-import { MatDialog} from '@angular/material/dialog';
-//Ngrx
-import { Store } from '@ngrx/store';
-import { IAppState } from 'src/app/store/state/app.state';
+import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+
 import { RouterGo } from 'ngrx-router';
-import { selectList } from './../../store/selectors/list.selectors';
-import { EditItem, AddItem, DeleteItem } from './../../store/actions/list.actions';
+import { Store } from '@ngrx/store';
+
+import { TextListState } from '@app/store/state/list.state';
+import { AppState } from '@app/store/state/app.state';
+import { selectTextList } from '@app/store/selectors/list.selectors';
+import { AddItem, EditItem, DeleteItem } from '@app/store/actions/list.actions';
+
+import { DialogMaterialComponent } from '@app/components/dialog-material/dialog-material.component';
+
 @Component({
   selector: 'app-list-items',
   templateUrl: './list-items.component.html',
   styleUrls: ['./list-items.component.css'],
 })
-export class ListItemsComponent implements OnInit {
 
-  list: Array<string> = [];
-  form: FormGroup;
-  getState$: Observable<any>;
+export class ListItemsComponent implements OnInit {
+  textList: Array<string> = [];
+  textListForm: FormGroup;
+  textListState$: Observable<TextListState>;
 
   constructor(
     public dialogEditItem: MatDialog,
     private fb: FormBuilder,
-    private store: Store<IAppState>
+    private store: Store<AppState>
   ) {
-    this.getState$ = this.store.select(selectList);
-
+    this.textListState$ = this.store.select(selectTextList);
   }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      text: ['', [Validators.required]],
-    });
-    this.getState$.subscribe(result=>{
-      this.list= result.list;
+    this.createForm();
+    this.getTextListState();
+  }
+
+  createForm() {
+    const regexText = '^[a-zA-Z]+$';
+
+    this.textListForm = this.fb.group({
+      text: ['', [Validators.required, Validators.pattern(regexText)]],
     });
   }
 
- 
+  getTextListState(){
+    this.textListState$.subscribe((result) => {
+      this.textList = result.list;
+    });
+  }
+
+
   addItem(text: string): void {
-    this.store.dispatch(new AddItem({list:this.list,text}));
+    this.store.dispatch(new AddItem(text));
   }
 
-  deleteItem(index: number): void {
+  editItem(position: number): void {
     const dialogRef = this.dialogEditItem.open(DialogMaterialComponent, {
-      width: '250px',
+      data: 'edit',
+    });
+
+    dialogRef.afterClosed().subscribe((newText: string): void => {
+      if (newText) {
+        this.store.dispatch(
+          new EditItem( newText , position )
+        );
+      }
+    });
+  }
+  deleteItem(position: number): void {
+    const dialogRef = this.dialogEditItem.open(DialogMaterialComponent, {
       data: 'delete',
     });
 
     dialogRef.afterClosed().subscribe((resp: boolean): void => {
       if (resp) {
-        this.store.dispatch(new DeleteItem({list: this.list, position: index}));
+        this.store.dispatch(
+          new DeleteItem(position)
+        );
       }
     });
   }
 
-  editItem(index: number): void {
-    const dialogRef = this.dialogEditItem.open(DialogMaterialComponent, {
-      width: '250px',
-      data: 'edit',
-    });
 
-    dialogRef.afterClosed().subscribe((newText: string): void => {
-      if (typeof newText !== 'undefined') {
-        this.store.dispatch(new EditItem({list: this.list, position: index, text: newText}));
-      }
-    });
-  }
 
   moveItem(event: CdkDragDrop<string[]>): void {
-    moveItemInArray(this.list, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.textList, event.previousIndex, event.currentIndex);
   }
 
-  testGo(selectText: string) {
+  routerGo(selectText: string) {
     this.store.dispatch(
       new RouterGo({
         path: [`prueba-rutas-redux/${selectText}`],
