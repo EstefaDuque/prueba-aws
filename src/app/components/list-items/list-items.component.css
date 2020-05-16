@@ -15,23 +15,25 @@
     margin: 5px;
     padding: 10px;
   }
-  button {
-    margin-right: 5px;
+ 
+  .button-add {
+    background-color: #93eaaf;
+    margin: 15px;
   }
   
-  #button-add {
-    background: #93eaaf;
-    margin-top: 15px;
+  .button-delete {
+    background-color: #fb2e51;
   }
   
-  #button-delete {
-    background: #fb2e51;
+  .button-edit {
+    background-color: #366aef;
+    
+  }
+  .button-delete ,.button-edit{
+    margin: 5px 5px;
   }
   
-  #button-edit {
-    background: #366aef;
-  }
-  /*Drag&Drop sorting*/
+ /*Drag&Drop sorting*/
   
   .list-container {
     width: 500px;

@@ -6,8 +6,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatDialogModule} from '@angular/material/dialog';
 
-
-
 @NgModule({
 
   exports: [
