@@ -1,11 +1,10 @@
-import { ListEffects } from './store/effects/list.effects';
+import { ListEffects } from '@app/store/effects/list.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from './../environments/environment.prod';
 import { EffectsModule } from '@ngrx/effects';
 import { appReducers } from './store/reducers/app.reducers';
 import { StoreModule } from '@ngrx/store';
 import { RouterEffects } from 'ngrx-router';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { BrowserModule } from '@angular/platform-browser';
