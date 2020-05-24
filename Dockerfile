@@ -1,7 +1,7 @@
 
-FROM node:alpine as node
+FROM node:alpine as nodeAlias
 
-WORKDIR /usr/src/estefaduque
+WORKDIR /usr/src/prueba-aws
 
 COPY package*.json ./
 
@@ -13,6 +13,6 @@ RUN npm run build
 
 FROM mesosphere/aws-cli
 
-COPY --from=node /usr/src/estefaduque .
+COPY --from=nodeAlias /usr/src/prueba-aws .
 
 CMD ["s3" ,"sync" ,"./", "s3://estefaduque-webapp"]
