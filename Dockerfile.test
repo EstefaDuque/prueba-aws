@@ -4,5 +4,5 @@ COPY package*.json ./
 ENV CHROME_BIN=/usr/bin/google-chrome
 RUN npm install
 COPY . . 
-CMD ["npm", "run", "test", "--" ,"--watch=false"]
+CMD ["npm", "run", "test", "--watch=false" ,"--progress=false","--browsers=ChromeHeadlessCI"]
 
