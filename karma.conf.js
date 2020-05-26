@@ -31,7 +31,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['Chrome'],
+    browsers:  ['chromium-browser'],
     singleRun: false,
     browserNoActivityTimeout: 25000,
     restartOnFileChange: true
