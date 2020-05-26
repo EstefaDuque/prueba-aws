@@ -3,4 +3,4 @@ WORKDIR /usr/src/prueba-aws
 COPY package*.json ./
 RUN npm install
 COPY . . 
-CMD ["npm", "run", "test"," --coverage"]
+CMD ["npm","run","test","--","--watch=false","--no-progress","--browsers=ChromeHeadlessNoSandbox"]
