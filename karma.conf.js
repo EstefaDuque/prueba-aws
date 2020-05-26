@@ -33,6 +33,7 @@ module.exports = function (config) {
     autoWatch: false,
     browsers: ['Chrome'],
     singleRun: false,
+    browserNoActivityTimeout: 25000,
     restartOnFileChange: true
   });
 };
