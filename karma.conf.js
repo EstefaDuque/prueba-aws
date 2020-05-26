@@ -32,7 +32,7 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: false,
     browsers: ['Chrome'],
-    singleRun: false,
+    singleRun: true,
     browserNoActivityTimeout: 120000,
     restartOnFileChange: true
   });
