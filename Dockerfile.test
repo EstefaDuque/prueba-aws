@@ -1,7 +1,7 @@
 FROM node:alpine
 WORKDIR /usr/src/prueba-aws
 COPY package*.json ./
-ENV CHROME_BIN=/usr/bin/google-chrome
+export CHROME_BIN=/usr/bin/google-chrome
 RUN npm install
 COPY . . 
 CMD ["npm", "run", "test", "--watch=false" ,"--progress=false","--browsers=ChromeHeadlessCI"]
