@@ -3,5 +3,5 @@ WORKDIR /usr/src/prueba-aws
 COPY package*.json ./
 RUN npm install
 COPY . . 
-CMD ["npm", "run", "test","--browsers","PhantomJS"]
+CMD ["npm", "run", "test"]
 
