@@ -2,5 +2,6 @@ FROM node:alpine
 WORKDIR /usr/src/prueba-aws
 COPY package*.json ./
 RUN npm install
+ENV CHROME_BIN=chromium
 COPY . . 
 CMD ["npm","run","test","--","--watch=false","--no-progress","--browsers=ChromeHeadlessNoSandbox"]
