@@ -22,10 +22,10 @@ module.exports = function (config) {
     },
     reporters: ['progress', 'kjhtml'],
     customLaunchers: {
-      ChromeHeadlessNoSandbox: {
-        base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
-      }
+     chromeTravisCi: {
+            base: 'Chrome',
+            flags: ['--no-sandbox']
+        }
     },
     port: 9876,
     colors: true,
@@ -36,4 +36,7 @@ module.exports = function (config) {
     browserNoActivityTimeout: 25000,
     restartOnFileChange: true
   });
+  if (process.env.TRAVIS) {
+    configuration.browsers = ['chromeTravisCi'];
+}
 };
