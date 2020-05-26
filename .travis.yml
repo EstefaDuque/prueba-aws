@@ -9,8 +9,6 @@ addons:
   apt:
     sources:
       - chrome: stable
-    packages:
-      - google-chrome-stable
 
 cache:
   directories:
