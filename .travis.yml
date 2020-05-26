@@ -7,9 +7,8 @@ matrix:
     include:
     - name: Client Web
     
-
-script:
-    -docker  build -t estefaduque-webapp .
+before_install:
+    -docker build -t estefaduque-webapp .
 
 deploy:
     skip_cleanup: true
