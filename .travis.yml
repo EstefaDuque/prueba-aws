@@ -8,8 +8,12 @@ matrix:
     - name: Client Web
 addons:
   chrome: stable
+
 before_install:
     - docker build -t estefaduque-webapp-test -f Dockerfile.test .
+    - # start your web application and listen on `localhost`
+    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+    ⋮
 
 script: 
     - docker run -e CI=true estefaduque-webapp-test
