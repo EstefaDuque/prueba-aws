@@ -4,5 +4,5 @@ COPY package*.json ./
 ENV CHROME_BIN=/usr/bin/google-chrome
 RUN npm install
 COPY . . 
-CMD ["npm", "run", "test", "--code-coverage"]
+CMD ["npm", "run", "test", "--single-run=true","--browsers","PhantomJS","--watch=false"]
 
