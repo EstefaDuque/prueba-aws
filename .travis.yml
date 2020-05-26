@@ -7,6 +7,12 @@ matrix:
     include:
     - name: Client Web
 
+before_install:
+    - docker build -t estefaduque-webapp-test -f Dockerfile.test 
+
+script: 
+    - docker run -e CI=true estefaduque-webapp-test
+      
 before-deploy:
     -docker  build -t estefaduque-webapp .
 
