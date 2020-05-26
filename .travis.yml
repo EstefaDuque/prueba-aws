@@ -7,7 +7,10 @@ matrix:
     include:
     - name: Client Web
     
-CHROME_BIN=/usr/bin/google-chrome karma start --single-run
+
+before_script:
+- ci/install-chrome
+- npm install
 
 before_install:
     - docker build -t estefaduque-webapp-test -f Dockerfile.test .
