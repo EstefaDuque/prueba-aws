@@ -8,7 +8,7 @@ matrix:
     - name: Client Web
     
 
-before-deploy:
+script:
     -docker  build -t estefaduque-webapp .
 
 deploy:
