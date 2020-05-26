@@ -12,7 +12,7 @@ before_install:
 
 script: 
     - docker run -e CI=true estefaduque-webapp-test
-      
+
 before-deploy:
     -docker  build -t estefaduque-webapp .
 
