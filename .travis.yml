@@ -1,6 +1,13 @@
 dist: trusty
-sudo: false
+sudo: required
 
+services:
+  -docker
+
+matrix:
+  include:
+  - name: Client Web
+  
 language: node_js
 node_js:
   - 'lts/*'
@@ -19,3 +26,14 @@ install:
 
 script:
   - npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+
+before-deploy:
+  - docker build -t estefaduque-webapp .
+
+deploy:
+    skip_cleanup: true
+    provider: script
+    script: bash ./deploy.sh
+    on:
+      branch: master
+
