@@ -22,18 +22,24 @@ module.exports = function (config) {
     },
     reporters: ['progress', 'kjhtml'],
     customLaunchers: {
-      ChromeHeadlessCI: {
-      base: 'ChromeHeadless',
-      flags: ['--no-sandbox', '--disable-gpu']
-    }
+     ChromeHeadless : { 
+      base : 'Chrome' , 
+      flags : [ 
+        '--headless' , 
+        '--disable-gpu' , 
+        '--no-sandbox' , 
+        '--remote-debugging-port = 9222' , 
+    ] 
+  } 
     },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: false,
-    browsers: ['Chrome'],
+    autoWatch: true,
+    browsers: ['ChromeHeadless'],
     singleRun: true,
-    browserNoActivityTimeout: 120000,
+    browserDisconnectTimeout: 20000,
+    browserNoActivityTimeout: 400000,
     restartOnFileChange: true
   });
   
