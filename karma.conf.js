@@ -36,7 +36,8 @@ module.exports = function (config) {
     browsers: ['PhantomJS'],
     singleRun: true,
     restartOnFileChange: true,
-    browserNoActivityTimeout: 60000
+    browserDisconnectTimeout: 20000,
+    browserNoActivityTimeout: 400000,
 
   });
 };
