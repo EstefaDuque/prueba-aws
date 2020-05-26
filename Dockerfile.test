@@ -1,7 +1,6 @@
 FROM node:alpine
 WORKDIR /usr/src/prueba-aws
 COPY package*.json ./
-export CHROME_BIN='/usr/bin/chromium'
 RUN npm install
 COPY . . 
 CMD ["npm", "run", "test"," --coverage"]
