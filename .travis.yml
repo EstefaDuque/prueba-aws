@@ -8,7 +8,7 @@ matrix:
     - name: Client Web
 
 before_install:
-  - docker build -t atolonrot-webapp-test -f Dockerfile.test .
+  - docker build -t estefaduque-webapp-test -f Dockerfile.test .
   
 script: 
   - docker run -e CI=true estefaduque-webapp-test
