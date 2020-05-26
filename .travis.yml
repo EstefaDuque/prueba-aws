@@ -6,7 +6,8 @@ services:
 matrix:
     include:
     - name: Client Web
- 
+addons:
+  chrome: stable
 before_install:
     - docker build -t estefaduque-webapp-test -f Dockerfile.test .
 
