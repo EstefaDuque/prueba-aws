@@ -6,5 +6,5 @@ RUN npm install
 COPY . .
 RUN npm run build
 FROM mesosphere/aws-cli
-COPY --from=builder /usr/src/prueba-aws/dist .
+COPY --from=builder /usr/src/prueba-aws/dist/prueba-aws .
 CMD ["s3", "sync", "./", "s3://estefaduque-webapp"]
